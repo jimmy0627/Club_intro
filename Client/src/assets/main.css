@@ -1,0 +1,40 @@
+:root {
+  /* 品牌色系 */
+  --primary-color: #8B0000;    /* 深紅色/勃根地紅 - 專業學術底蘊 */
+  --accent-color: #FF7F50;     /* 活力輔助色 - 互動與生活感 */
+  --neutral-bg: #FFFFFF;       /* 純白背景 */
+  --light-gray: #F5F5F5;       /* 淺灰區塊界線 */
+  
+  /* 文字顏色 */
+  --text-main: #333333;
+  --text-on-dark: #FFFFFF;
+  
+  /* 字體 */
+  --font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--neutral-bg);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}

@@ -123,12 +123,6 @@
       <!-- 編輯社團資訊 -->
       <div v-if="currentTab === 'edit'" class="edit-section">
         <div v-if="user.role === 'school_admin' && !selectedClubId" class="club-selector">
-          <div class="admin-quick-access" v-if="extracurricularClub">
-             <h3>🏛️ 行政發布</h3>
-             <div class="mini-club-card special" @click="loadClubData(extracurricularClub.id)">
-               {{ extracurricularClub.name }} (管理官方發布)
-             </div>
-          </div>
           <h3>🏟️ 選擇要編輯的社團</h3>
           <div class="selector-grid">
             <div v-for="c in regularClubs" :key="c.id" class="mini-club-card school-admin-club-item">
@@ -687,8 +681,13 @@ const memberFilter = ref('all'); // 'all', 'school', 'club'
 
 const filteredMembers = computed(() => {
   // 只回傳有權限的帳號 (school_admin 或 club_admin)
-  const admins = clubMembers.value.filter(m => m.role === 'school_admin' || m.role === 'club_admin');
+  let admins = clubMembers.value.filter(m => m.role === 'school_admin' || m.role === 'club_admin');
   
+  // 如果是校級管理員並且有選定特定社團，只顯示該社團的幹部
+  if (user.value.role === 'school_admin' && selectedClubId.value) {
+    admins = admins.filter(m => m.club_id === selectedClubId.value);
+  }
+
   if (memberFilter.value === 'school') {
     return admins.filter(m => m.role === 'school_admin');
   } else if (memberFilter.value === 'club') {

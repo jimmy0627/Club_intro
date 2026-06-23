@@ -208,7 +208,8 @@ const fetchClubs = async () => {
         weekday: filterWeekday.value
       }
     });
-    clubs.value = response.data;
+    // 過濾掉 ID 為 85 的課外活動組（行政單位）
+    clubs.value = response.data.filter(c => c.id !== 85);
   } catch (error) {
     console.error('取得社團失敗:', error);
   } finally {

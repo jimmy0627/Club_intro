@@ -150,7 +150,8 @@ const performSearch = async () => {
         weekday: filterWeekday.value
       } 
     });
-    results.value = res.data;
+    // 過濾掉 ID 為 85 的行政單位（課外活動組）
+    results.value = res.data.filter(c => c.id !== 85);
   } catch (error) {
     console.error('搜尋失敗', error);
   } finally {

@@ -1,0 +1,16 @@
+node_modules/
+.DS_Store
+.env
+*.local
+Server/db/database.sqlite
+Server/uploads/*
+!Server/uploads/default_club.png
+!Server/uploads/robotics_logo.png
+dist/
+.vscode/
+db_check.json
+fix_admin_name.js
+final_fix_encoding.js
+git rm -r --cached Server/node_modules
+git commit -m "chore: stop tracking node_modules"
+git push

@@ -14,3 +14,4 @@ final_fix_encoding.js
 git rm -r --cached Server/node_modules
 git commit -m "chore: stop tracking node_modules"
 git push
+Server/db/database.sqlite
